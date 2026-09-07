@@ -405,6 +405,11 @@ fbq('track', 'PageView');
   .routine-card h3{ font-size:20px; margin-bottom:8px; }
   .routine-card p{ margin:0; color:var(--plum-soft); font-size:15px; }
   @media(max-width:760px){ .testimonial-strip{grid-template-columns:1fr;} }
+  .social-proof{ margin:72px auto 80px; text-align:center; }
+  .social-proof h2{ margin-bottom:10px; }
+  .social-proof p{ max-width:620px; margin:0 auto 28px; color:var(--plum-soft); }
+  .social-proof-image{ display:block; width:100%; max-width:860px; height:auto; margin:0 auto; border-radius:18px; box-shadow:0 14px 34px rgba(55,22,47,.16); }
+  @media(max-width:760px){ .social-proof{ margin:56px auto 64px; padding:0 18px; } .social-proof-image{ border-radius:14px; } }
 
   /* Checklist / offer */
   #oferta{
@@ -757,12 +762,6 @@ fbq('track', 'PageView');
         <p>Combinações prontas pra manter consistência visual mesmo usando figurinhas de categorias diferentes.</p>
         <div class="price">Incluído no StoryKit: <b>sem custo adicional</b></div>
       </div>
-      <div class="bonus-card">
-        <div class="tagline">Bônus 5</div>
-        <h3>Lote extra de figurinhas de tendência</h3>
-        <p>Um adicional com estilos em alta, além do acervo principal do pack.</p>
-        <div class="price">Incluído no StoryKit: <b>sem custo adicional</b></div>
-      </div>
     </div>
   </div>
 </section>
@@ -812,27 +811,10 @@ fbq('track', 'PageView');
   </div>
 </section>
 
-<section class="marquee-section" aria-labelledby="marquee-title-3">
-  <div class="wrap">
-    <h2 class="section-title" id="marquee-title-3">Veja como o StoryKit aparece na prática</h2>
-    <p class="section-sub">Uma biblioteca visual feita para você encontrar, combinar e publicar com agilidade.</p>
-  </div>
-  <div class="marquee-track-wrap" aria-label="Galeria contínua da biblioteca do StoryKit">
-    <div class="marquee-track">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-03.png" alt="Story de exemplo do StoryKit">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-01.png" alt="Story de exemplo do StoryKit">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-05.png" alt="Story de exemplo do StoryKit">
-      <img class="marquee-item" src="./public/images/storykit/criadores-de-conteudo.jpg" alt="Conteúdo para criadores no StoryKit">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-06.png" alt="Story de exemplo do StoryKit">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-02.png" alt="Story de exemplo do StoryKit">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-03.png" alt="" aria-hidden="true">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-01.png" alt="" aria-hidden="true">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-05.png" alt="" aria-hidden="true">
-      <img class="marquee-item" src="./public/images/storykit/criadores-de-conteudo.jpg" alt="" aria-hidden="true">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-06.png" alt="" aria-hidden="true">
-      <img class="marquee-item" src="./public/images/storykit/story-proprio-02.png" alt="" aria-hidden="true">
-    </div>
-  </div>
+<section class="social-proof" aria-labelledby="social-proof-title">
+  <h2 class="section-title" id="social-proof-title">Quem já usou, sentiu a diferença</h2>
+  <p>Feedbacks de quem transformou Stories simples em publicações com mais presença.</p>
+  <img class="social-proof-image" src="./public/images/storykit/depoimento-storykit.png" alt="Depoimento de uma cliente sobre o StoryKit">
 </section>
 
 <section class="wrap" id="oferta">
@@ -845,7 +827,6 @@ fbq('track', 'PageView');
       <li>Prompts para as 10 melhores legendas do seu nicho</li>
       <li>Calendário de postagem sazonal</li>
       <li>Guia de paletas de cores</li>
-      <li>Lote extra de figurinhas de tendência</li>
       <li>Material organizado por categorias</li>
       <li>Recursos para diferentes nichos</li>
       <li>7 dias de garantia</li>
