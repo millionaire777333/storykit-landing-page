@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryKit — Figurinhas prontas, faceis e rápidas de usar para Stories com presença</title>
+<meta name="description" content="Transforme Stories simples em publicações com mais presença usando figurinhas prontas, recursos visuais e elementos criativos do StoryKit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1592655525701847');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+<style>
+  :root{
+    --cream:#FBF6F0;
+    --cream-deep:#F4EBE0;
+    --plum:#37162F;
+    --plum-soft:#5A2C4D;
+    --rose:#E2557A;
+    --rose-deep:#C63F63;
+    --gold:#CDA054;
+    --ink:#241220;
+    --paper:#FFFDFB;
+    --line: rgba(55,22,47,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--plum);
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  .narrow{max-width:720px; margin:0 auto; padding:0 24px;}
+
+  /* Buttons */
+  .btn{
+    display:inline-block;
+    background:linear-gradient(90deg, #00C96B 0%, #7DDF57 100%);
+    color:#fff;
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:17px;
+    padding:18px 36px;
+    border-radius:100px;
+    text-decoration:none;
+    box-shadow:0 10px 30px rgba(0,201,107,0.25), 0 0 18px rgba(125,223,87,0.18);
+    transition:transform .18s ease, box-shadow .18s ease;
+    border:none;
+    cursor:pointer;
+  }
+  .btn:hover{ transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,201,107,0.32), 0 0 22px rgba(125,223,87,0.24); }
+  .btn-center{ text-align:center; margin:36px 0; }
+
+  /* Top ribbon */
+  .ribbon{
+    background:#FF3131;
+    color:var(--cream);
+    text-align:center;
+    padding:10px 16px;
+    font-size:13px;
+    letter-spacing:.03em;
+    font-weight:600;
+  }
+
+  /* Hero */
+  .hero{
+    background:#000;
+    color:#fff;
+    padding:64px 0 40px;
+    text-align:center;
+  }
+  .hero h1{
+    color:#fff;
+    font-size:clamp(32px, 5vw, 54px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .accent{
+    font-style:italic;
+    color:var(--rose-deep);
+  }
+  .hero p.lede{
+    max-width:620px;
+    margin:22px auto 0;
+    font-size:19px;
+    color:rgba(255,255,255,0.78);
+  }
+
+  /* Gallery strip */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+    margin:44px 0;
+  }
+  .gallery img{
+    width:100%;
+    aspect-ratio:9/16;
+    object-fit:cover;
+    border-radius:14px;
+    box-shadow:0 8px 20px rgba(55,22,47,0.12);
+  }
+  @media(max-width:760px){
+    .gallery{grid-template-columns:repeat(3,1fr);}
+  }
+
+  /* Promise band */
+  .promise{
+    text-align:center;
+    margin:56px 0;
+  }
+  .promise .big{
+    font-family:'Fraunces', serif;
+    font-size:clamp(24px,3.4vw,34px);
+    color:var(--plum);
+  }
+  .promise .big em{ color:var(--rose-deep); font-style:italic; }
+
+  /* Feature trio */
+  .trio{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    margin:48px 0;
+  }
+  .trio .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:28px 24px;
+  }
+  .trio .card .num{
+    font-family:'Fraunces', serif;
+    font-size:15px;
+    color:var(--gold);
+    margin-bottom:10px;
+    letter-spacing:.02em;
+  }
+  .trio .card h3{ font-size:20px; margin-bottom:8px; line-height:1.25;}
+  .trio .card p{ margin:0; color:var(--plum-soft); font-size:15px;}
+  .trio-single{
+    grid-template-columns:minmax(0,520px);
+    justify-content:center;
+    margin-top:32px;
+    margin-bottom:32px;
+  }
+  @media(max-width:760px){ .trio{grid-template-columns:1fr;} }
+
+  /* Steps section */
+  .section-title{
+    text-align:center;
+    font-size:clamp(26px,3.6vw,38px);
+    margin-bottom:8px;
+  }
+  .section-sub{
+    text-align:center;
+    color:var(--plum-soft);
+    max-width:520px;
+    margin:0 auto 40px;
+  }
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+    counter-reset:step;
+  }
+  .step{ position:relative; padding-left:0; text-align:center;}
+  .step .circle{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--plum);
+    color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    margin:0 auto 16px;
+  }
+  .step h3{ font-size:19px; margin-bottom:8px;}
+  .step p{ color:var(--plum-soft); font-size:15px; margin:0;}
+  @media(max-width:760px){ .steps{grid-template-columns:1fr; gap:36px;} }
+
+  /* Copy and paste demonstration */
+  .copy-demo-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);
+    align-items:center;
+    gap:48px;
+  }
+  .copy-demo-layout .section-title,
+  .copy-demo-layout .section-sub{ text-align:left; }
+  .copy-demo-layout .section-sub{ margin-left:0; }
+  .copy-demo-image{
+    width:100%;
+    max-width:520px;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    margin:0 auto;
+  }
+  @media(max-width:820px){
+    .copy-demo-layout{ grid-template-columns:1fr; gap:32px; }
+    .copy-demo-layout .section-title,
+    .copy-demo-layout .section-sub{ text-align:center; }
+    .copy-demo-layout .section-sub{ margin-left:auto; }
+    .copy-demo-image{ max-width:100%; margin:0 auto; }
+  }
+
+  /* Continuous visual showcases */
+  .marquee-section{
+    margin:72px 0;
+    padding:56px 0 60px;
+    overflow:hidden;
+    background:var(--paper);
+  }
+  .marquee-section.dark{ background:#000; color:#fff; }
+  .marquee-section.dark .section-title{ color:#fff; }
+  .marquee-section.dark .section-sub{ color:rgba(255,255,255,.76); }
+  .marquee-track-wrap{ overflow:hidden; width:100%; }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    gap:18px;
+    animation:storykit-marquee 38s linear infinite;
+    will-change:transform;
+  }
+  .marquee-track.reverse{ animation-duration:46s; animation-direction:reverse; }
+  .marquee-item{
+    width:170px;
+    aspect-ratio:9/16;
+    flex:0 0 auto;
+    object-fit:cover;
+    border-radius:16px;
+    box-shadow:0 10px 24px rgba(55,22,47,.16);
+  }
+  .marquee-section.dark .marquee-item{ box-shadow:0 12px 28px rgba(0,0,0,.38); }
+  .marquee-track-wrap:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes storykit-marquee{ from{ transform:translateX(0); } to{ transform:translateX(calc(-50% - 9px)); } }
+  @media(max-width:600px){
+    .marquee-section{ margin:56px 0; padding:42px 0 46px; }
+    .marquee-item{ width:126px; border-radius:12px; }
+    .marquee-track{ gap:14px; animation-duration:32s; }
+    .marquee-track.reverse{ animation-duration:38s; }
+  }
+  @media(prefers-reduced-motion:reduce){
+    .marquee-track,
+    .marquee-track.reverse{ animation:none; transform:none; }
+  }
+
+  /* Stickers preview grid */
+  .stickers-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+    gap:14px;
+  }
+  .sticker-item{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    text-align:center;
+  }
+  .sticker-item img{ width:100%; aspect-ratio:1/1; object-fit:cover;}
+  .sticker-item span{
+    display:block;
+    font-size:12.5px;
+    padding:8px 6px 12px;
+    color:var(--plum);
+    font-weight:600;
+  }
+
+  /* Before / After */
+  .style-showcase{
+    max-width:none;
+    background:#000;
+    color:#fff;
+    padding:64px max(24px, calc((100vw - 1080px) / 2 + 24px));
+  }
+  .style-showcase .section-title{ color:#fff; }
+  .style-showcase .section-sub{ color:rgba(255,255,255,0.76); }
+  .ba-strip{
+    display:flex;
+    gap:22px;
+    overflow-x:auto;
+    padding:8px 4px 24px;
+    scroll-snap-type:x mandatory;
+  }
+  .ba-pair{
+    flex:0 0 auto;
+    display:flex;
+    gap:12px;
+    scroll-snap-align:start;
+  }
+  .ba-card{ width:150px; text-align:center; }
+  .ba-card img{
+    width:150px; height:266px; object-fit:cover;
+    border-radius:12px;
+    border:1px solid var(--line);
+  }
+  .ba-card .tag{
+    display:inline-block;
+    margin-top:8px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.04em;
+    padding:4px 12px;
+    border-radius:100px;
+  }
+  .ba-card.before .tag{ background:#EFE3E9; color:var(--plum-soft); }
+  .ba-card.after .tag{ background:var(--rose); color:#fff; }
+
+  /* Bonus section */
+  .bonus-band{
+    background:var(--plum);
+    color:var(--cream);
+    padding:64px 0;
+    margin:64px 0 0;
+  }
+  .bonus-band .section-title, .bonus-band .section-sub{ color:var(--cream); }
+  .bonus-band .section-sub{ color:#D8C4CF; }
+  .bonus-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-top:36px;
+  }
+  .bonus-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:18px;
+    padding:26px;
+  }
+  .bonus-card .tagline{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .bonus-card h3{ color:#fff; font-size:21px; margin-bottom:10px; line-height:1.25;}
+  .bonus-card p{ color:#E7D9E0; font-size:15px; margin:0 0 14px;}
+  .bonus-card .price{ font-size:14px; color:#C9B2C0; }
+  .bonus-card .price s{ opacity:.7; }
+  .bonus-card .price b{ color:#fff; }
+  @media(max-width:760px){ .bonus-list{grid-template-columns:1fr;} }
+
+  /* Niches */
+  .niche-cloud{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+    margin-top:28px;
+  }
+  .niche-pill{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:9px 18px;
+    font-size:14px;
+    color:var(--plum);
+    font-weight:500;
+  }
+
+  /* Testimonials */
+  .testimonial-strip{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .testimonial-strip img{
+    border-radius:16px;
+    border:1px solid var(--line);
+  }
+  .routine-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:24px;
+  }
+  .routine-card h3{ font-size:20px; margin-bottom:8px; }
+  .routine-card p{ margin:0; color:var(--plum-soft); font-size:15px; }
+  @media(max-width:760px){ .testimonial-strip{grid-template-columns:1fr;} }
+
+  /* Checklist / offer */
+  #oferta{
+    max-width:none;
+    background:#000000;
+    padding:64px 24px;
+  }
+  #oferta .offer{ margin:0 auto; }
+  .offer{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:44px;
+    margin:64px auto;
+    max-width:640px;
+    text-align:center;
+  }
+  .offer h2{ font-size:26px; margin-bottom:22px;}
+  .check-list{
+    list-style:none;
+    padding:0; margin:0 0 30px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 20px;
+    text-align:left;
+  }
+  .check-list li{
+    font-size:14.5px;
+    color:var(--plum-soft);
+    padding-left:26px;
+    position:relative;
+  }
+  .check-list li::before{
+    content:"✓";
+    position:absolute; left:0; top:0;
+    color:var(--rose-deep);
+    font-weight:700;
+  }
+  @media(max-width:520px){ .check-list{grid-template-columns:1fr;} }
+  .price-block{ margin:8px 0 26px; }
+  .price-block .old{
+    text-decoration:line-through;
+    color:var(--plum-soft);
+    font-size:16px;
+  }
+  .price-block .now{
+    font-family:'Fraunces', serif;
+    font-size:44px;
+    color:var(--rose-deep);
+    display:block;
+    margin:4px 0;
+  }
+  .price-block .now small{ font-size:18px; font-family:'Work Sans',sans-serif; }
+  .price-block .cash{ font-size:14px; color:var(--plum-soft); }
+
+  /* Guarantee */
+  .guarantee{
+    text-align:center;
+    background:#000000;
+    max-width:none;
+    margin:0;
+    padding:0 max(24px, calc((100% - 640px) / 2 + 24px)) 56px;
+    display:flow-root;
+  }
+  .guarantee .seal{
+    display:block;
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    object-position:center;
+    border-radius:50%;
+    margin:0 auto 28px;
+  }
+  .guarantee h2{ font-size:24px; margin-bottom:12px; color:#F5F1EC; }
+  .guarantee p{ color:#D8D1C8; }
+  @media(max-width:760px){
+    .guarantee .seal{
+      width:115px;
+      height:115px;
+      margin-bottom:24px;
+    }
+  }
+
+  /* Author */
+  .author{
+    background:var(--cream-deep);
+    padding:64px 0;
+  }
+  .author-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px;
+    text-align:center;
+  }
+  .author .kicker{
+    font-size:13px; letter-spacing:.04em; font-weight:700;
+    color:var(--rose-deep); margin-bottom:10px;
+  }
+  .author h2{ font-size:26px; margin-bottom:18px;}
+  .author p{ color:var(--plum-soft); text-align:left; max-width:600px; margin:0 auto 14px;}
+
+  /* FAQ */
+  .faq{ max-width:720px; margin:64px auto; padding:0 24px; }
+  .faq-item{
+    border-bottom:1px solid var(--line);
+  }
+  .faq-item summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:22px 4px 22px 0;
+    color:var(--plum);
+    cursor:pointer;
+    font-family:'Fraunces',serif;
+    font-size:18px;
+    font-weight:500;
+    line-height:1.35;
+    list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:"";
+    width:9px;
+    height:9px;
+    flex:0 0 auto;
+    border-right:2px solid var(--rose-deep);
+    border-bottom:2px solid var(--rose-deep);
+    transform:rotate(45deg);
+    transition:transform .2s ease, margin .2s ease;
+    margin:0 4px 5px 0;
+  }
+  .faq-item[open] summary::after{
+    transform:rotate(-135deg);
+    margin:6px 4px 0 0;
+  }
+  .faq-item p{
+    color:var(--plum-soft);
+    margin:0;
+    padding:0 36px 22px 0;
+    font-size:15px;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .faq-item[open] p{ animation:faq-reveal .2s ease both; }
+  }
+  @keyframes faq-reveal{
+    from{ opacity:0; transform:translateY(-4px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @media(max-width:520px){
+    .faq-item summary{ gap:14px; padding-right:0; }
+    .faq-item p{ padding-right:0; }
+  }
+
+  footer{
+    background:var(--plum);
+    color:#C9B2C0;
+    padding:40px 24px;
+    text-align:center;
+    font-size:13px;
+    line-height:1.7;
+  }
+  footer a{ color:var(--cream); text-decoration:underline; }
+  footer .legal{ max-width:640px; margin:16px auto 0; opacity:.75; }
+</style>
+</head>
+<body>
+<!-- Meta Pixel Code -->
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1592655525701847&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
+<!-- End Meta Pixel Code -->
+
+<div class="ribbon">GARANTA HOJE COM CONDIÇÃO ESPECIAL + BÔNUS EXCLUSIVOS</div>
+
+<header class="hero">
+  <div class="narrow">
+    <h1>StoryKit: figurinhas prontas para transformar Stories simples em <span class="accent">publicações com mais presença</span></h1>
+    <p class="lede">Crie conteúdos mais bonitos e consistentes com uma biblioteca digital de figurinhas e recursos visuais fáceis de usar.</p>
+    <div class="btn-center">
+      <a class="btn" href="https://pay.kiwify.com.br/DGoQc9u">Transformar meus stories agora</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="gallery">
+      <img src="./public/images/storykit/story-proprio-01.png" alt="Exemplo de Story criado com o StoryKit">
+      <img src="./public/images/storykit/story-proprio-02.png" alt="Exemplo de Story criado com o StoryKit">
+      <img src="./public/images/storykit/story-proprio-03.png" alt="Exemplo de Story criado com o StoryKit">
+      <img src="./public/images/storykit/story-proprio-04.png" alt="Exemplo de Story criado com o StoryKit">
+      <img src="./public/images/storykit/story-proprio-05.png" alt="Exemplo de Story criado com o StoryKit">
+      <img src="./public/images/storykit/story-proprio-06.png" alt="Exemplo de Story criado com o StoryKit">
+    </div>
+  </div>
+</header>
+
+<section class="marquee-section" aria-labelledby="marquee-title-1">
+  <div class="wrap">
+    <h2 class="section-title" id="marquee-title-1">Conheça algumas figurinhas em ação</h2>
+    <p class="section-sub">Uma seleção de elementos prontos para dar personalidade aos seus Stories.</p>
+  </div>
+  <div class="marquee-track-wrap" aria-label="Galeria contínua de exemplos do StoryKit">
+    <div class="marquee-track">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-01.png" alt="Exemplo de Story do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-02.png" alt="Exemplo de Story do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-03.png" alt="Exemplo de Story do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-04.png" alt="Exemplo de Story do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-05.png" alt="Exemplo de Story do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-06.png" alt="Exemplo de Story do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-01.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-02.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-03.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-04.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-05.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-06.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="wrap promise">
+  <p class="big">É só copiar e colar — e em <em>menos de 1 minuto</em> seus stories estão prontos.</p>
+
+  <div class="trio trio-single">
+    <div class="card">
+      <div class="num">Figurinhas</div>
+      <h3>+10.000 figurinhas profissionais</h3>
+      <p>Para qualquer nicho, prontas para usar sem precisar criar nada do zero.</p>
+    </div>
+  </div>
+</section>
+
+<section class="marquee-section dark" aria-labelledby="marquee-title-2">
+  <div class="wrap">
+    <h2 class="section-title" id="marquee-title-2">Stories prontos para diferentes momentos</h2>
+    <p class="section-sub">Ideias visuais para acompanhar sua rotina, seu conteúdo e seu estilo.</p>
+  </div>
+  <div class="marquee-track-wrap" aria-label="Galeria contínua de Stories em diferentes estilos">
+    <div class="marquee-track reverse">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-04.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-06.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/criadores-de-conteudo.jpg" alt="Conteúdo para criadores no StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-02.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-05.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-03.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-04.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-06.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/criadores-de-conteudo.jpg" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-02.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-05.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-03.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="margin:64px 0;">
+  <div class="copy-demo-layout">
+    <div>
+      <h2 class="section-title">Acesso imediato e simplificado</h2>
+      <p class="section-sub">Do pagamento ao primeiro story pronto em poucos minutos.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="circle">1</div>
+          <h3>Você recebe o link de acesso</h3>
+          <p>Após a confirmação da compra, as instruções chegam ao e-mail informado no checkout.</p>
+        </div>
+        <div class="step">
+          <div class="circle">2</div>
+          <h3>Acessa o material digital</h3>
+          <p>Encontre a biblioteca de figurinhas, os tutoriais e os recursos extras organizados.</p>
+        </div>
+        <div class="step">
+          <div class="circle">3</div>
+          <h3>Copia e cola nos seus stories</h3>
+          <p>Escolha os elementos que combinam com o conteúdo e personalize seus Stories em poucos minutos.</p>
+        </div>
+      </div>
+      <div class="btn-center"><a class="btn" href="https://pay.kiwify.com.br/DGoQc9u">Quero stories lindos</a></div>
+    </div>
+    <div>
+      <img class="copy-demo-image" src="./public/images/storykit/e-so-copiar02-Photoroom.png" alt="Demonstração visual de como copiar e usar os elementos do StoryKit">
+    </div>
+  </div>
+</section>
+
+<section class="wrap style-showcase" style="margin:64px 0;">
+  <h2 class="section-title">Veja o StoryKit em diferentes estilos</h2>
+  <p class="section-sub">Uma amostra visual para inspirar conteúdos de diferentes momentos e nichos.</p>
+
+  <div class="ba-strip">
+    <div class="ba-pair">
+      <div class="ba-card after"><img src="./public/images/storykit/story-proprio-01.png" alt="Story com composição visual para conteúdo de fé"><span class="tag">Fé</span></div>
+    </div>
+    <div class="ba-pair">
+      <div class="ba-card after"><img src="./public/images/storykit/story-proprio-02.png" alt="Story com composição visual para autocuidado"><span class="tag">Autocuidado</span></div>
+    </div>
+    <div class="ba-pair">
+      <div class="ba-card after"><img src="./public/images/storykit/story-proprio-03.png" alt="Story com composição visual para rotina fitness"><span class="tag">Fitness</span></div>
+    </div>
+    <div class="ba-pair">
+      <div class="ba-card after"><img src="./public/images/storykit/story-proprio-04.png" alt="Story com composição visual para gastronomia"><span class="tag">Gastronomia</span></div>
+    </div>
+    <div class="ba-pair">
+      <div class="ba-card after"><img src="./public/images/storykit/story-proprio-05.png" alt="Story com composição visual para beleza"><span class="tag">Beleza</span></div>
+    </div>
+    <div class="ba-pair">
+      <div class="ba-card after"><img src="./public/images/storykit/story-proprio-06.png" alt="Story com composição visual para criação de conteúdo"><span class="tag">Criatividade</span></div>
+    </div>
+  </div>
+
+  <div class="btn-center"><a class="btn" href="https://pay.kiwify.com.br/DGoQc9u">Quero transformar meus stories</a></div>
+</section>
+
+<section class="bonus-band">
+  <div class="wrap">
+    <h2 class="section-title">Recursos extras para criar com mais liberdade</h2>
+    <p class="section-sub">O StoryKit reúne cinco complementos para personalizar seus conteúdos e planejar uma rotina visual mais consistente.</p>
+
+    <div class="bonus-list">
+      <div class="bonus-card">
+        <div class="tagline">Bônus 1</div>
+        <h3>Fontes e tipografias exclusivas</h3>
+        <p>Pra personalizar frases nas suas próprias figurinhas e manter uma identidade só sua.</p>
+        <div class="price">Incluído no StoryKit: <b>sem custo adicional</b></div>
+      </div>
+      <div class="bonus-card">
+        <div class="tagline">Bônus 2</div>
+        <h3>Prompts para as 10 melhores legendas do seu nicho</h3>
+        <p>Um guia com os prompts certos pra você gerar, em segundos, as legendas que mais combinam com o seu tipo de conteúdo — sem depender de app nenhum.</p>
+        <div class="price">Incluído no StoryKit: <b>sem custo adicional</b></div>
+      </div>
+      <div class="bonus-card">
+        <div class="tagline">Bônus 3</div>
+        <h3>Calendário de postagem sazonal</h3>
+        <p>Datas comemorativas e períodos do ano organizados, pra você planejar sem depender de lembrar sozinho.</p>
+        <div class="price">Incluído no StoryKit: <b>sem custo adicional</b></div>
+      </div>
+      <div class="bonus-card">
+        <div class="tagline">Bônus 4</div>
+        <h3>Guia de paletas de cores</h3>
+        <p>Combinações prontas pra manter consistência visual mesmo usando figurinhas de categorias diferentes.</p>
+        <div class="price">Incluído no StoryKit: <b>sem custo adicional</b></div>
+      </div>
+      <div class="bonus-card">
+        <div class="tagline">Bônus 5</div>
+        <h3>Lote extra de figurinhas de tendência</h3>
+        <p>Um adicional com estilos em alta, além do acervo principal do pack.</p>
+        <div class="price">Incluído no StoryKit: <b>sem custo adicional</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="margin:64px 0;">
+  <h2 class="section-title">São mais de 10.000 figurinhas para diversos nichos</h2>
+  <p class="section-sub">De maternidade a advocacia, tem figurinha pronta pro seu dia a dia.</p>
+  <div class="niche-cloud">
+    <span class="niche-pill">Academia / Treino / Corrida</span>
+    <span class="niche-pill">Bom dia / Tarde / Noite</span>
+    <span class="niche-pill">Café / Chá</span>
+    <span class="niche-pill">Caixinha de Perguntas</span>
+    <span class="niche-pill">Calendário / Dias da semana</span>
+    <span class="niche-pill">Comida</span>
+    <span class="niche-pill">Confeitaria</span>
+    <span class="niche-pill">Criadora de Conteúdo</span>
+    <span class="niche-pill">Cristã / Devocional</span>
+    <span class="niche-pill">Dentista</span>
+    <span class="niche-pill">Direito / Advocacia</span>
+    <span class="niche-pill">Dona de Casa</span>
+    <span class="niche-pill">Elementos 3D</span>
+    <span class="niche-pill">Enfermagem</span>
+    <span class="niche-pill">Esteticista</span>
+    <span class="niche-pill">Férias / Praia</span>
+    <span class="niche-pill">Frases</span>
+    <span class="niche-pill">Home Office / Trabalho</span>
+    <span class="niche-pill">Lash Designer</span>
+    <span class="niche-pill">Manicure</span>
+    <span class="niche-pill">Maternidade</span>
+    <span class="niche-pill">Moda</span>
+    <span class="niche-pill">Nutricionista</span>
+    <span class="niche-pill">Rotina e Família</span>
+    <span class="niche-pill">Skin Care</span>
+    <span class="niche-pill">Terapia / Psicologia</span>
+    <span class="niche-pill">E muito mais...</span>
+  </div>
+</section>
+
+<section class="wrap" style="margin:64px 0;">
+  <h2 class="section-title">Por que o StoryKit facilita sua rotina de conteúdo</h2>
+  <p class="section-sub">Recursos visuais que ajudam você a criar com mais agilidade e manter uma apresentação consistente.</p>
+  <div class="testimonial-strip">
+    <article class="routine-card"><h3>Comece com uma base pronta</h3><p>Monte Stories mais bonitos sem precisar criar cada detalhe do zero.</p></article>
+    <article class="routine-card"><h3>Encontre recursos para cada momento</h3><p>Escolha elementos adequados para diferentes tipos de publicação e nichos.</p></article>
+    <article class="routine-card"><h3>Ganhe tempo na criação</h3><p>Use materiais organizados para deixar sua rotina de conteúdo mais simples.</p></article>
+    <article class="routine-card"><h3>Mantenha consistência visual</h3><p>Combine os elementos com o seu estilo e fortaleça a apresentação do perfil.</p></article>
+  </div>
+</section>
+
+<section class="marquee-section" aria-labelledby="marquee-title-3">
+  <div class="wrap">
+    <h2 class="section-title" id="marquee-title-3">Veja como o StoryKit aparece na prática</h2>
+    <p class="section-sub">Uma biblioteca visual feita para você encontrar, combinar e publicar com agilidade.</p>
+  </div>
+  <div class="marquee-track-wrap" aria-label="Galeria contínua da biblioteca do StoryKit">
+    <div class="marquee-track">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-03.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-01.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-05.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/criadores-de-conteudo.jpg" alt="Conteúdo para criadores no StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-06.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-02.png" alt="Story de exemplo do StoryKit">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-03.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-01.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-05.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/criadores-de-conteudo.jpg" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-06.png" alt="" aria-hidden="true">
+      <img class="marquee-item" src="./public/images/storykit/story-proprio-02.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="oferta">
+  <div class="offer">
+    <h2>Tudo isso espera por você no StoryKit</h2>
+    <ul class="check-list">
+      <li>+10.000 figurinhas exclusivas</li>
+      <li>Copie e cole com 1 clique</li>
+      <li>Fontes e tipografias exclusivas</li>
+      <li>Prompts para as 10 melhores legendas do seu nicho</li>
+      <li>Calendário de postagem sazonal</li>
+      <li>Guia de paletas de cores</li>
+      <li>Lote extra de figurinhas de tendência</li>
+      <li>Material organizado por categorias</li>
+      <li>Recursos para diferentes nichos</li>
+      <li>7 dias de garantia</li>
+      <li>Acesso imediato</li>
+      <li>Compra única</li>
+    </ul>
+
+    <div class="price-block">
+      <span class="old">De R$ 67,90</span>
+      <span class="now">R$ 19,90</span>
+      <span class="cash">ou 5x de R$ 3,98</span>
+    </div>
+
+    <a class="btn" href="https://pay.kiwify.com.br/DGoQc9u">Quero transformar meus stories agora</a>
+  </div>
+</section>
+
+<section class="guarantee">
+  <img class="seal" src="./public/images/storykit/selo-de-garantia-incondicional.jpeg" alt="Selo de garantia incondicional de 7 dias">
+  <h2>7 dias para conhecer o material</h2>
+  <p>Depois da compra, você pode explorar o StoryKit durante o prazo de garantia e solicitar suporte caso tenha alguma dúvida sobre o acesso.</p>
+</section>
+
+<section class="author">
+  <div class="author-inner">
+    <div class="kicker">Desenvolvido pelo StoryKit</div>
+    <h2>Recursos visuais para uma rotina mais simples</h2>
+    <p>Desenvolvido para criadoras, empreendedoras e marcas que querem transformar Stories simples em publicações com mais presença visual.</p>
+    <p>A biblioteca reúne figurinhas e materiais digitais organizados para facilitar a criação, respeitando o estilo e a comunicação de cada perfil.</p>
+  </div>
+</section>
+
+<section class="faq">
+  <h2 class="section-title" style="margin-bottom:32px;">Dúvidas frequentes</h2>
+
+  <details class="faq-item">
+    <summary>Como eu recebo o StoryKit?</summary>
+    <p>Após a confirmação da compra, você recebe por e-mail as instruções para acessar o material digital.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Posso usar em Android e iPhone?</summary>
+    <p>Sim. O material acompanha orientações para usar os recursos nos dois sistemas.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Preciso baixar as figurinhas no meu celular?</summary>
+    <p>Você pode acessar a biblioteca conforme a necessidade e salvar somente os elementos que pretende utilizar.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Eu não sei nada de design, posso comprar?</summary>
+    <p>Sim. As figurinhas e orientações foram organizadas para facilitar a criação mesmo para quem não trabalha com design.</p>
+  </details>
+  <details class="faq-item">
+    <summary>O StoryKit é para mim?</summary>
+    <p>O material foi pensado para criadoras, profissionais, pequenos negócios e pessoas que desejam publicar Stories com mais agilidade, consistência e personalidade.</p>
+  </details>
+</section>
+
+<footer>
+  <div>Copyright 2026 — StoryKit · Todos os direitos reservados</div>
+  <div><a href="./termos.html">Termos de Uso</a> · <a href="./privacidade.html">Política de Privacidade</a></div>
+  <p class="legal">O StoryKit é um produto digital independente, sem vínculo com o Instagram ou a Meta. Resultados variam conforme o contexto e a aplicação de cada pessoa.</p>
+</footer>
+
+</body>
+</html>
