@@ -449,16 +449,28 @@ fbq('track', 'PageView');
     text-decoration:line-through;
     color:var(--plum-soft);
     font-size:16px;
-  }
-  .price-block .now{
-    font-family:'Fraunces', serif;
-    font-size:44px;
-    color:var(--rose-deep);
     display:block;
-    margin:4px 0;
   }
-  .price-block .now small{ font-size:18px; font-family:'Work Sans',sans-serif; }
-  .price-block .cash{ font-size:14px; color:var(--plum-soft); }
+  .price-block .installments{
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:8px;
+    font-family:'Fraunces', serif;
+    color:#00C96B;
+    margin:6px 0 2px;
+  }
+  .price-block .installments small{
+    font-size:22px;
+    font-family:'Work Sans',sans-serif;
+    font-weight:700;
+  }
+  .price-block .installments strong{ font-size:64px; line-height:1; }
+  .price-block .cash{ font-size:15px; color:var(--plum-soft); }
+  @media(max-width:520px){
+    .price-block .installments small{font-size:19px;}
+    .price-block .installments strong{font-size:52px;}
+  }
 
   /* Guarantee */
   .guarantee{
@@ -842,9 +854,9 @@ fbq('track', 'PageView');
     </ul>
 
     <div class="price-block">
-      <span class="old">De R$ 67,90</span>
-      <span class="now">R$ 19,90</span>
-      <span class="cash">ou 5x de R$ 3,98</span>
+      <span class="old">De R$ 97,00</span>
+      <span class="installments"><small>5x de</small> <strong>R$ 8,43</strong></span>
+      <span class="cash">Ou apenas R$ 37 à vista</span>
     </div>
 
     <a class="btn" href="https://pay.kiwify.com.br/DGoQc9u">Quero transformar meus stories agora</a>
